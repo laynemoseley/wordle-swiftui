@@ -9,7 +9,7 @@ import SwiftUI
 
 let row1 = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]
 let row2 = ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
-let row3 = ["enter", "z", "x", "c", "v", "b", "n", "m", "delete"]
+let row3 = ["ent", "z", "x", "c", "v", "b", "n", "m", "del"]
 
 enum KeyboardKey {
     case enter, delete, letter(String)
@@ -54,6 +54,7 @@ struct KeyboardView: View {
                 }
             }
         }
+        .padding(.horizontal, 2)
     }
 }
 
@@ -62,9 +63,18 @@ struct KeyboardKeyView: View {
     let action: (String) -> ()
     
     var body: some View {
-        Button(content) {
+        Button(action: {
             action(content)
-        }
+        }, label: {
+            ZStack {
+                Text(content)
+            }
+            .padding(10.0)
+            .background(Color(white: 0.75))
+            .cornerRadius(5.0)
+        })
+        .foregroundColor(.black)
+        .minimumScaleFactor(0.1)
     }
 }
 
