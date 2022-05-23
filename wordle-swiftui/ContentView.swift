@@ -14,7 +14,16 @@ struct ContentView: View {
             Spacer()
             GridView()
             Spacer()
-            KeyboardView()
+            KeyboardView { key in
+                switch (key) {
+                case .enter:
+                    print("enter pressed")
+                case .delete:
+                    print("delete pressed")
+                case .letter(let l):
+                    print("letter pressed \(l)")
+                }
+            }
         }
     }
 }
