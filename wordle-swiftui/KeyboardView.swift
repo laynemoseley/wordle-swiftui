@@ -31,22 +31,22 @@ struct KeyboardView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
+        VStack(spacing: 5) {
+            HStack(spacing: 5) {
                 ForEach(row1.indices, id: \.self) { i in
                     KeyboardKeyView(content: row1[i]) { content in
                         keyPressed(content)
                     }
                 }
             }
-            HStack {
+            HStack(spacing: 5) {
                 ForEach(row2.indices, id: \.self) { i in
                     KeyboardKeyView(content: row2[i]) { content in
                         keyPressed(content)
                     }
                 }
             }
-            HStack {
+            HStack(spacing: 5) {
                 ForEach(row3.indices, id: \.self) { i in
                     KeyboardKeyView(content: row3[i]) { content in
                         keyPressed(content)
@@ -75,6 +75,8 @@ struct KeyboardKeyView: View {
         })
         .foregroundColor(.black)
         .minimumScaleFactor(0.1)
+        .transition(.scale)
+        .animation(.easeInOut, value: content)
     }
 }
 
