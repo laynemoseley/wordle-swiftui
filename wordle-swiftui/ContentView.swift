@@ -9,20 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            HeaderView()
-            Spacer()
-            GridView()
-            Spacer()
-            KeyboardView { key in
-                switch (key) {
-                case .enter:
-                    print("enter pressed")
-                case .delete:
-                    print("delete pressed")
-                case .letter(let l):
-                    print("letter pressed \(l)")
+        GeometryReader { screen in
+            VStack {
+                HeaderView()
+                Spacer()
+                GridView()
+                Spacer()
+                KeyboardView { key in
+                    switch (key) {
+                    case .enter:
+                        print("enter pressed")
+                    case .delete:
+                        print("delete pressed")
+                    case .letter(let l):
+                        print("letter pressed \(l)")
+                    }
                 }
+                .frame(width: screen.size.width, height: screen.size.height * 0.33)
             }
         }
     }
