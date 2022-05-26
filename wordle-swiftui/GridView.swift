@@ -52,17 +52,17 @@ struct GridView: View {
                 LetterBox()
                 LetterBox()
             }
-        }
+        }.padding(40.0)
     }
 }
 
 struct LetterBox: View {
     var body: some View {
-        Button("a") {
-            print("ok")
-        }
-        .frame(minWidth: 50, minHeight: 50)
-        .border(.gray, width: 2.0)
+        Rectangle()
+            .fill(.white)
+            .frame(minWidth: 50, minHeight: 50)
+            .border(.gray, width: 2.0)
+            .aspectRatio(1.0, contentMode: .fit)
     }
 }
 
